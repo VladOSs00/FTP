@@ -407,15 +407,29 @@ namespace FTP
 
         private void button4_Click(object sender, EventArgs e)
         {
-           
+
+            string RootFolder = "ftp://127.0.0.1:21/";
+
+
 
 
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-           
+            string RootFolder = "ftp://127.0.0.1:21/";
+            string FileName = @"1.txt";
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(Path.Combine(RootFolder, FileName));
+            request.Credentials = new NetworkCredential("admin", "admin");
+            request.Method = WebRequestMethods.Ftp.DeleteFile;
+          
 
+           
+              FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+            
+            response.Close();
+            listView2.Items.Add($"Размер файла файла {FileName} - {response.StatusDescription} байт");
+            
 
         }
 
@@ -477,7 +491,8 @@ namespace FTP
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
-        {
+        {
+
 
         }
 
@@ -485,9 +500,13 @@ namespace FTP
         {
 
             string RootFolder = "ftp://127.0.0.1:21/";
-            string DirName = "My folder6";
+            string DirName = "My folder7";
+
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create(Path.Combine(RootFolder,DirName));
-            request.Credentials = new NetworkCredential("admin", "admin");            request.Method = WebRequestMethods.Ftp.MakeDirectory;            FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+            request.Credentials = new NetworkCredential("admin", "admin");
+            request.Method = WebRequestMethods.Ftp.MakeDirectory;
+            FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+            response.Close();
             listView2.Items.Add(response.StatusDescription);
 
             try
@@ -499,10 +518,29 @@ namespace FTP
             }
             catch (WebException)
             {
-                //directoryExists = false;
+                MessageBox.Show(" Nonn  dsfdsf");
             }
 
             //return directoryExists;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            string RootFolder = "ftp://127.0.0.1:21/";
+            string FileName = "1.txt";
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(Path.Combine(RootFolder, FileName));
+            request.Credentials = new NetworkCredential("admin", "admin");
+            request.Method = WebRequestMethods.Ftp.GetFileSize;
+            request.Method = WebRequestMethods.Ftp.GetDateTimestamp;
+            request.Method = WebRequestMethods.Ftp.PrintWorkingDirectory;
+            FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+            MessageBox.Show($"Размер файла файла {FileName} - {response.ContentLength} байт" + $"Дата и время модификации файла  {FileName} - {response.LastModified}  ");
+            MessageBox.Show($" {FileName} - {response.Headers} ");
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            string RootFolder = "ftp://127.0.0.1:21/";
         }
     }
 }
