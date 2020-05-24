@@ -41,13 +41,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.Back = new System.Windows.Forms.ToolStripMenuItem();
+            this.Forward = new System.Windows.Forms.ToolStripMenuItem();
+            this.Up = new System.Windows.Forms.ToolStripMenuItem();
+            this.Create = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.Information = new System.Windows.Forms.ToolStripMenuItem();
+            this.Copy = new System.Windows.Forms.ToolStripMenuItem();
+            this.Insert = new System.Windows.Forms.ToolStripMenuItem();
+            this.Deleted = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.listView2 = new System.Windows.Forms.ListView();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -60,9 +65,22 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.новоеОкноToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.запускToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.button12 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.menuStrip1.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // treeView1
@@ -87,22 +105,22 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(61, 60);
+            this.textBox1.Location = new System.Drawing.Point(69, 244);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(493, 20);
+            this.textBox1.Size = new System.Drawing.Size(613, 20);
             this.textBox1.TabIndex = 3;
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // listView1
             // 
+            this.listView1.ContextMenuStrip = this.contextMenuStrip1;
             this.listView1.HideSelection = false;
-            this.listView1.LargeImageList = this.imageList2;
-            this.listView1.Location = new System.Drawing.Point(12, 238);
+            this.listView1.LargeImageList = this.imageList1;
+            this.listView1.Location = new System.Drawing.Point(12, 279);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(670, 508);
+            this.listView1.Size = new System.Drawing.Size(673, 428);
             this.listView1.TabIndex = 25;
             this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
             // 
             // imageList2
             // 
@@ -113,7 +131,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(594, 28);
+            this.button1.Location = new System.Drawing.Point(688, 137);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 26;
@@ -123,14 +141,14 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(91, 15);
+            this.textBox2.Location = new System.Drawing.Point(105, 54);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(316, 20);
+            this.textBox2.Size = new System.Drawing.Size(365, 20);
             this.textBox2.TabIndex = 27;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(430, 12);
+            this.button2.Location = new System.Drawing.Point(509, 46);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 28;
@@ -140,88 +158,136 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 12);
+            this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(41, 46);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 26);
+            this.label1.Size = new System.Drawing.Size(58, 34);
             this.label1.TabIndex = 29;
             this.label1.Text = "Поиск\r\nфайлов";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 60);
+            this.label2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(12, 244);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 13);
+            this.label2.Size = new System.Drawing.Size(45, 18);
             this.label2.TabIndex = 30;
-            this.label2.Text = "Путь";
+            this.label2.Text = "Путь:";
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-2, -25);
+            this.pictureBox1.ContextMenuStrip = this.contextMenuStrip1;
+            this.pictureBox1.Location = new System.Drawing.Point(-2, 36);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(762, 771);
+            this.pictureBox1.Size = new System.Drawing.Size(750, 710);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 31;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Salmon;
-            this.pictureBox2.Location = new System.Drawing.Point(766, -12);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(732, 673);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox2.TabIndex = 32;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripSeparator1});
+            this.Back,
+            this.Forward,
+            this.Up,
+            this.Create,
+            this.Information,
+            this.Copy,
+            this.Insert,
+            this.Deleted,
+            this.toolStripMenuItem9});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 32);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 202);
+            this.contextMenuStrip1.Closing += new System.Windows.Forms.ToolStripDropDownClosingEventHandler(this.contextMenuStrip1_Closing);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            this.contextMenuStrip1.Click += new System.EventHandler(this.Back_Click);
             // 
-            // toolStripMenuItem1
+            // Back
             // 
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4});
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            this.Back.AutoToolTip = true;
+            this.Back.CheckOnClick = true;
+            this.Back.Name = "Back";
+            this.Back.Size = new System.Drawing.Size(180, 22);
+            this.Back.Text = "Назад";
             // 
-            // toolStripMenuItem2
+            // Forward
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem2.Text = "toolStripMenuItem2";
+            this.Forward.Name = "Forward";
+            this.Forward.Size = new System.Drawing.Size(180, 22);
+            this.Forward.Text = "Вперед";
             // 
-            // toolStripMenuItem3
+            // Up
             // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem3.Text = "toolStripMenuItem3";
+            this.Up.Name = "Up";
+            this.Up.Size = new System.Drawing.Size(180, 22);
+            this.Up.Text = "Вверх";
             // 
-            // toolStripMenuItem4
+            // Create
             // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem4.Text = "toolStripMenuItem4";
+            this.Create.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem10});
+            this.Create.Name = "Create";
+            this.Create.Size = new System.Drawing.Size(180, 22);
+            this.Create.Text = "Создать";
             // 
-            // toolStripSeparator1
+            // toolStripMenuItem10
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem10.Text = "Создать папку";
+            // 
+            // Information
+            // 
+            this.Information.Name = "Information";
+            this.Information.Size = new System.Drawing.Size(180, 22);
+            this.Information.Text = "Информация";
+            // 
+            // Copy
+            // 
+            this.Copy.Name = "Copy";
+            this.Copy.Size = new System.Drawing.Size(180, 22);
+            this.Copy.Text = "Копировать";
+            // 
+            // Insert
+            // 
+            this.Insert.Name = "Insert";
+            this.Insert.Size = new System.Drawing.Size(180, 22);
+            this.Insert.Text = "Вставить";
+            // 
+            // Deleted
+            // 
+            this.Deleted.Name = "Deleted";
+            this.Deleted.Size = new System.Drawing.Size(180, 22);
+            this.Deleted.Text = "Удалить";
+            // 
+            // toolStripMenuItem9
+            // 
+            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem9.Text = "toolStripMenuItem9";
+            this.toolStripMenuItem9.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.toolStripMenuItem9.ToolTipText = "sdfsfsd";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Salmon;
+            this.pictureBox2.Location = new System.Drawing.Point(769, 54);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(729, 634);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.TabIndex = 32;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseDown);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(806, 36);
+            this.button3.Location = new System.Drawing.Point(804, 86);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 33;
@@ -233,15 +299,15 @@
             // 
             this.listView2.HideSelection = false;
             this.listView2.LargeImageList = this.imageList2;
-            this.listView2.Location = new System.Drawing.Point(766, 86);
+            this.listView2.Location = new System.Drawing.Point(787, 166);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(616, 440);
+            this.listView2.Size = new System.Drawing.Size(635, 360);
             this.listView2.TabIndex = 34;
             this.listView2.UseCompatibleStateImageBehavior = false;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(974, 46);
+            this.button4.Location = new System.Drawing.Point(935, 86);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(74, 34);
             this.button4.TabIndex = 35;
@@ -251,7 +317,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(1054, 46);
+            this.button5.Location = new System.Drawing.Point(1036, 96);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(76, 34);
             this.button5.TabIndex = 36;
@@ -261,7 +327,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(650, 70);
+            this.button6.Location = new System.Drawing.Point(688, 166);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 23);
             this.button6.TabIndex = 37;
@@ -271,7 +337,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(718, 168);
+            this.button7.Location = new System.Drawing.Point(688, 195);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 38;
@@ -281,7 +347,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(713, 223);
+            this.button8.Location = new System.Drawing.Point(688, 224);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(75, 23);
             this.button8.TabIndex = 39;
@@ -298,7 +364,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(1239, 46);
+            this.button9.Location = new System.Drawing.Point(1239, 96);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 34);
             this.button9.TabIndex = 41;
@@ -308,7 +374,7 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(1145, 36);
+            this.button10.Location = new System.Drawing.Point(1145, 81);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(88, 44);
             this.button10.TabIndex = 42;
@@ -318,7 +384,7 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(1348, 46);
+            this.button11.Location = new System.Drawing.Point(1347, 86);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(75, 23);
             this.button11.TabIndex = 43;
@@ -326,12 +392,102 @@
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(962, 136);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(407, 20);
+            this.textBox3.TabIndex = 46;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(836, 137);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(102, 17);
+            this.label3.TabIndex = 47;
+            this.label3.Text = "Поиск файлов";
+            // 
+            // файлToolStripMenuItem
+            // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.новоеОкноToolStripMenuItem,
+            this.выходToolStripMenuItem});
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // новоеОкноToolStripMenuItem
+            // 
+            this.новоеОкноToolStripMenuItem.Name = "новоеОкноToolStripMenuItem";
+            this.новоеОкноToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.новоеОкноToolStripMenuItem.Text = "Новое окно";
+            // 
+            // выходToolStripMenuItem
+            // 
+            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.выходToolStripMenuItem.Text = "Выход";
+            // 
+            // запускToolStripMenuItem
+            // 
+            this.запускToolStripMenuItem.Name = "запускToolStripMenuItem";
+            this.запускToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.запускToolStripMenuItem.Text = "Запуск";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem,
+            this.запускToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1498, 24);
+            this.menuStrip1.TabIndex = 45;
+            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Visible = false;
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(181, 26);
+            this.contextMenuStrip2.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip2_Opening);
+            // 
+            // contextMenuStrip3
+            // 
+            this.contextMenuStrip3.Name = "contextMenuStrip3";
+            this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip3.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip3_Opening);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(841, 223);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(75, 23);
+            this.button12.TabIndex = 48;
+            this.button12.Text = "button12";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1274, 450);
+            this.ClientSize = new System.Drawing.Size(1486, 450);
+            this.Controls.Add(this.button12);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
@@ -353,15 +509,19 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.pictureBox1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = " ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -381,12 +541,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ListView listView2;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
@@ -399,6 +553,28 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem Back;
+        private System.Windows.Forms.ToolStripMenuItem Forward;
+        private System.Windows.Forms.ToolStripMenuItem Up;
+        private System.Windows.Forms.ToolStripMenuItem Create;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
+        private System.Windows.Forms.ToolStripMenuItem Information;
+        private System.Windows.Forms.ToolStripMenuItem Copy;
+        private System.Windows.Forms.ToolStripMenuItem Insert;
+        private System.Windows.Forms.ToolStripMenuItem Deleted;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem новоеОкноToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem запускToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
+        private System.Windows.Forms.Button button12;
     }
 }
 

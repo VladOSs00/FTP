@@ -19,6 +19,8 @@ namespace FTP
         int currIndex = -1;
         //текущий адресс
         string currListViewAddress = "";
+        private string Delete;
+
         public Form1()
         {
             InitializeComponent();
@@ -41,24 +43,6 @@ namespace FTP
             listView1.Columns.Add(c3);
             listView1.Columns.Add(c4);
 
-            //добавления колонок
-            listView2.ColumnClick += new ColumnClickEventHandler(ClickOnColumn);
-            ColumnHeader c5 = new ColumnHeader();
-            c5.Text = "Имя";
-            c5.Width = c.Width + 80;
-            ColumnHeader c6 = new ColumnHeader();
-            c6.Text = "Размер";
-            c6.Width = c2.Width + 60;
-            ColumnHeader c7 = new ColumnHeader();
-            c7.Text = "Тип";
-            c7.Width = c3.Width + 60;
-            ColumnHeader c8 = new ColumnHeader();
-            c8.Text = "Изменен";
-            c8.Width = c4.Width + 60;
-            listView1.Columns.Add(c5);
-            listView1.Columns.Add(c6);
-            listView1.Columns.Add(c7);
-            listView1.Columns.Add(c8);
             //заполнение TreeView узлами локальных дисков и заполнение дочерних узлов этих дисков
             string[] str = Environment.GetLogicalDrives();
             int n = 1;
@@ -91,6 +75,30 @@ namespace FTP
                         tn.SelectedImageIndex = 2;
                 }
             }
+
+
+            //добавления колонок
+            listView2.ColumnClick += new ColumnClickEventHandler(ClickOnColumn);
+            ColumnHeader c5 = new ColumnHeader();
+            c5.Text = "Имя";
+            c5.Width = c5.Width + 80;
+            ColumnHeader c6 = new ColumnHeader();
+            c6.Text = "Размер";
+            c6.Width = c6.Width + 60;
+            ColumnHeader c7 = new ColumnHeader();
+            c7.Text = "Тип";
+            c7.Width = c7.Width + 60;
+            ColumnHeader c8 = new ColumnHeader();
+            c8.Text = "Изменен";
+            c8.Width = c8.Width + 60;
+            listView2.Columns.Add(c5);
+            listView2.Columns.Add(c6);
+            listView2.Columns.Add(c7);
+            listView2.Columns.Add(c8);
+
+            Back.Click += Back_Click;
+            
+
         }
 
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -291,15 +299,15 @@ namespace FTP
             }
 
             //Дисковод
-         //   DriveInfo[] drives = DriveInfo.GetDrives();
-        //    foreach (DriveInfo drive in drives)
-        //    {
-          //      if (drive.IsReady)
-            //    {
-              //      MessageBox.Show($"Название: {drive.Name}" +
-                //        $"Тип: {drive.DriveType}");
-              //  }
-           // }
+            DriveInfo[] drives = DriveInfo.GetDrives();
+            foreach (DriveInfo drive in drives)
+            {
+                if (drive.IsReady)
+                {
+                   MessageBox.Show($"Название: {drive.Name}" +
+                        $"Тип: {drive.DriveType}");
+                }
+            }
 
         }
 
@@ -333,21 +341,30 @@ namespace FTP
 
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
-            contextMenuStrip1.Show(PointToScreen(new Point(0, 39)));
+         //   contextMenuStrip1.Show(PointToScreen(new Point(0, 39)));
+         //   contextMenuStrip2.Show(PointToScreen(new Point(0, 39)));
+
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
-            {
-                contextMenuStrip1.Show(PointToScreen(new Point(0, 39)));
-            }
+          //  if (e.Button == MouseButtons.Right)
+         ///   {
+         //       contextMenuStrip1.Show(PointToScreen(new Point(0, 39)));
+         //   }
+
+          //  if (e.Button == MouseButtons.Right)
+          //  {
+          //      contextMenuStrip2.Show(PointToScreen(new Point(0, 39)));
+          //  }
+
+
 
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            contextMenuStrip1.Show(Cursor.Position);
+          //  contextMenuStrip1.Show(Cursor.Position);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -393,12 +410,12 @@ namespace FTP
                 {
                     AllNames += names_list[i] + "\n";
                 }
-                MessageBox.Show(AllNames);
+              //  MessageBox.Show(AllNames);
                 listView2.Items.Add(AllNames);
-                treeView2.Nodes.Add(AllNames);
+               // treeView2.Nodes.Add(AllNames);
 
-                // string DirectoryListDetails = reader.ReadToEnd();
-                // listView2.Items.Add(DirectoryListDetails);
+                 string DirectoryListDetails = reader.ReadToEnd();
+                 listView2.Items.Add(DirectoryListDetails);
 
             }
             catch { }
@@ -409,6 +426,15 @@ namespace FTP
         {
 
             string RootFolder = "ftp://127.0.0.1:21/";
+            string DirName = "My folder7";
+
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(Path.Combine(RootFolder, DirName));
+            request.Credentials = new NetworkCredential("admin", "admin");
+            request.Method = WebRequestMethods.Ftp.RemoveDirectory;
+            request.Method = Delete = listView1.SelectedItems.ToString();
+
+            request.GetResponse().Close();
+
 
 
 
@@ -420,7 +446,7 @@ namespace FTP
             string RootFolder = "ftp://127.0.0.1:21/";
             string FileName = @"1.txt";
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create(Path.Combine(RootFolder, FileName));
-            request.Credentials = new NetworkCredential("admin", "admin");
+            request.Credentials = new NetworkCredential("qwerty", "qwerty");
             request.Method = WebRequestMethods.Ftp.DeleteFile;
           
 
@@ -475,7 +501,9 @@ namespace FTP
                 MessageBox.Show($"Название: {drive.Name}" + $"Тип: {drive.DriveType}" + $"Файловая система: {drive.DriveFormat}");
                 if (drive.IsReady)
                 {
-                    MessageBox.Show($"Объем диска: {drive.TotalSize}" + $"Свободное пространство: {drive.TotalFreeSpace}" + $"Метка: {drive.VolumeLabel}");
+                    MessageBox.Show($"Объем диска: {drive.TotalSize}" +
+                        $"Свободное пространство: {drive.TotalFreeSpace}" +
+                        $"Метка: {drive.VolumeLabel}");
                 }
             }
         }
@@ -490,38 +518,13 @@ namespace FTP
                 + $"Время создания каталога: {dirInfo.CreationTime}");
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-
-        }
+     
 
         private void button9_Click(object sender, EventArgs e)
         {
-
-            string RootFolder = "ftp://127.0.0.1:21/";
-            string DirName = "My folder7";
-
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(Path.Combine(RootFolder,DirName));
-            request.Credentials = new NetworkCredential("admin", "admin");
-            request.Method = WebRequestMethods.Ftp.MakeDirectory;
-            FtpWebResponse response = (FtpWebResponse)request.GetResponse();
-            response.Close();
-            listView2.Items.Add(response.StatusDescription);
-
-            try
-            {
-                using (request.GetResponse())
-                {
-                    MessageBox.Show("dsfdsf");
-                }
-            }
-            catch (WebException)
-            {
-                MessageBox.Show(" Nonn  dsfdsf");
-            }
-
-            //return directoryExists;
+            CreateFileServer newForm = new CreateFileServer();
+        //    CreateFolderServer newForm = new CreateFolderServer();
+            newForm.Show();
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -534,13 +537,66 @@ namespace FTP
             request.Method = WebRequestMethods.Ftp.GetDateTimestamp;
             request.Method = WebRequestMethods.Ftp.PrintWorkingDirectory;
             FtpWebResponse response = (FtpWebResponse)request.GetResponse();
-            MessageBox.Show($"Размер файла файла {FileName} - {response.ContentLength} байт" + $"Дата и время модификации файла  {FileName} - {response.LastModified}  ");
-            MessageBox.Show($" {FileName} - {response.Headers} ");
+            MessageBox.Show($"Размер файла файла {FileName} - {response.ContentLength} байт" 
+                           + $"Дата и время модификации файла  {FileName} - {response.LastModified}  ");
+          //  MessageBox.Show($" {FileName} - {response.Headers} ");
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
             string RootFolder = "ftp://127.0.0.1:21/";
+        }
+
+
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
+            contextMenuStrip2.Show(Cursor.Position);
+        }
+
+        void Back_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("s");
+            
+        }
+
+        private void contextMenuStrip2_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
+
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
+
+        private void contextMenuStrip1_Closing(object sender, ToolStripDropDownClosingEventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void contextMenuStrip3_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
